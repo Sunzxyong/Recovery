@@ -1,0 +1,8 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="recovery_default_margin">16dp</dimen>
+    <dimen name="recovery_default_margin_8dp">8dp</dimen>
+    <dimen name="recovery_activity_toolbar_elevation">4dp</dimen>
+
+    <dimen name="recovery_default_text_size">14sp</dimen>
+</resources>

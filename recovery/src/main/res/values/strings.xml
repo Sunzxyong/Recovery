@@ -1,0 +1,16 @@
+<resources>
+    <string name="recovery_menu_debug">Debug</string>
+    <string name="recovery_menu_save">Save</string>
+    <string name="recovery_restart_clear">重启并清空缓存</string>
+    <string name="recovery_restart">重启应用</string>
+    <string name="recovery_recover">恢复界面</string>
+    <string name="recovery_dialog_tips">提示</string>
+    <string name="recovery_dialog_sure">确定</string>
+    <string name="recovery_dialog_cancel">取消</string>
+    <string name="recovery_dialog_tips_msg">此操作将清空应用的所有数据并重新启动应用!</string>
+    <string name="recovery_exception_type">ExceptionType: %s</string>
+    <string name="recovery_class_name">ClassName: %s</string>
+    <string name="recovery_method_name">MethodName: %s</string>
+    <string name="recovery_line_number">LineNumber: %d</string>
+    <string name="recovery_crash_tips_msg">%s在使用时发生一个错误\n请尝试恢复或重启应用!</string>
+</resources>

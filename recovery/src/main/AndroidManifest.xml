@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.zxy.recovery">
+
+    <application
+        android:supportsRtl="true">
+        <activity
+            android:name=".core.RecoveryActivity"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
+            android:process=":recover"
+            android:screenOrientation="portrait"
+            android:theme="@style/RecoveryTheme.NoActionBar">
+        </activity>
+    </application>
+
+</manifest>

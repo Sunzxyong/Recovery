@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#E6E6E6"
+              android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/recovery_default_margin_8dp"
+        android:layout_marginLeft="@dimen/recovery_default_margin"
+        android:layout_marginTop="@dimen/recovery_default_margin"
+        android:text="Exception"
+        android:textSize="16sp"
+        android:typeface="serif"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="@dimen/recovery_default_margin"
+        android:background="#B6B6B6"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_type"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_marginRight="@dimen/recovery_default_margin"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:paddingLeft="@dimen/recovery_default_margin"
+            android:textSize="@dimen/recovery_default_text_size"
+            android:typeface="serif"
+            tools:text="ExceptionType: "/>
+
+        <TextView
+            android:id="@+id/tv_class_name"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_marginRight="@dimen/recovery_default_margin"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:paddingLeft="@dimen/recovery_default_margin"
+            android:textSize="@dimen/recovery_default_text_size"
+            android:typeface="serif"
+            tools:text="ClassName: "/>
+
+        <TextView
+            android:id="@+id/tv_method_name"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_marginRight="@dimen/recovery_default_margin"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:paddingLeft="@dimen/recovery_default_margin"
+            android:textSize="@dimen/recovery_default_text_size"
+            android:typeface="serif"
+            tools:text="MethodName: "/>
+
+        <TextView
+            android:id="@+id/tv_line_number"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_marginRight="@dimen/recovery_default_margin"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:paddingLeft="@dimen/recovery_default_margin"
+            android:textSize="@dimen/recovery_default_text_size"
+            android:typeface="serif"
+            tools:text="LineNumber: "/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/recovery_default_margin_8dp"
+        android:layout_marginLeft="@dimen/recovery_default_margin"
+        android:layout_marginTop="@dimen/recovery_default_margin_8dp"
+        android:text="Cause"
+        android:textSize="16sp"
+        android:typeface="serif"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="@dimen/recovery_default_margin"
+        android:background="#B6B6B6"/>
+
+    <TextView
+        android:id="@+id/tv_cause"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/recovery_default_margin"
+        android:layout_marginRight="@dimen/recovery_default_margin"
+        android:layout_marginTop="@dimen/recovery_default_margin_8dp"
+        android:ellipsize="end"
+        android:maxLines="3"
+        android:textSize="@dimen/recovery_default_text_size"
+        android:typeface="serif"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/recovery_default_margin_8dp"
+        android:layout_marginLeft="@dimen/recovery_default_margin"
+        android:layout_marginTop="@dimen/recovery_default_margin"
+        android:text="StackTrace"
+        android:textSize="16sp"
+        android:typeface="serif"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="@dimen/recovery_default_margin"
+        android:background="#B6B6B6"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/recovery_default_margin_8dp"
+        android:layout_marginLeft="@dimen/recovery_default_margin"
+        android:layout_marginRight="@dimen/recovery_default_margin_8dp"
+        android:layout_marginTop="@dimen/recovery_default_margin_8dp"
+        android:fillViewport="true">
+
+        <TextView
+            android:id="@+id/tv_stack_trace"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/recovery_default_text_size"/>
+    </ScrollView>
+</LinearLayout>

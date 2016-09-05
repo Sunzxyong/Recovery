@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="recovery_menu_debug">Debug</string>
+    <string name="recovery_menu_save">Save</string>
+    <string name="recovery_restart_clear">Restart and clear</string>
+    <string name="recovery_restart">Restart</string>
+    <string name="recovery_recover">Recover</string>
+    <string name="recovery_dialog_tips">Tips</string>
+    <string name="recovery_dialog_sure">Sure</string>
+    <string name="recovery_dialog_cancel">Cancel</string>
+    <string name="recovery_dialog_tips_msg">This will clear all the data and restart the application.</string>
+    <string name="recovery_exception_type">ExceptionType: %s</string>
+    <string name="recovery_class_name">ClassName: %s</string>
+    <string name="recovery_method_name">MethodName: %s</string>
+    <string name="recovery_line_number">LineNumber: %d</string>
+    <string name="recovery_crash_tips_msg">%s.An error occurred when used\nPlease try to recover or restart the application.</string>
+</resources>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E6E6E6"
+    android:fitsSystemWindows="true"
+    tools:context="com.zxy.recovery.core.RecoveryActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        android:background="?attr/colorPrimary"
+        android:elevation="@dimen/recovery_activity_toolbar_elevation"
+        android:fitsSystemWindows="true"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/RecoveryTheme.AppBarOverlay"
+        app:popupTheme="@style/RecoveryTheme.PopupOverlay"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:animateLayoutChanges="true"
+        android:clipToPadding="false"
+        android:paddingTop="?attr/actionBarSize">
+
+        <include
+            android:id="@+id/recovery_debug_layout"
+            layout="@layout/layout_recovery_debug"
+            android:visibility="gone"/>
+
+        <LinearLayout
+            android:id="@+id/recovery_main_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="230dp"
+                android:layout_height="200dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_recovery_page"/>
+
+            <TextView
+                android:id="@+id/tv_crash_tips"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:lineSpacingExtra="2dp"
+                android:textColor="#A6A6A6"
+                android:textSize="@dimen/recovery_default_text_size"
+                android:textStyle="bold"
+                android:typeface="serif"
+                tools:text="@string/recovery_crash_tips_msg"/>
+
+            <Button
+                android:id="@+id/btn_recover"
+                android:layout_width="168dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/recovery_default_margin"
+                android:background="@drawable/recovery_default_btn_selector"
+                android:text="@string/recovery_recover"
+                android:textColor="@color/recoveryTextColor"
+                android:textSize="@dimen/recovery_default_text_size"/>
+
+            <Button
+                android:id="@+id/btn_restart"
+                android:layout_width="168dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/recovery_default_margin_8dp"
+                android:background="@drawable/recovery_default_btn_selector"
+                android:text="@string/recovery_restart"
+                android:textColor="@color/recoveryTextColor"
+                android:textSize="@dimen/recovery_default_text_size"/>
+
+            <Button
+                android:id="@+id/btn_restart_clear"
+                android:layout_width="168dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/recovery_default_margin_8dp"
+                android:background="@drawable/recovery_default_btn_selector"
+                android:text="@string/recovery_restart_clear"
+                android:textColor="@color/recoveryTextColor"
+                android:textSize="@dimen/recovery_default_text_size"/>
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>
