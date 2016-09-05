@@ -5,7 +5,7 @@ A crash recovery framework!
 
 [ ![Download](https://api.bintray.com/packages/sunzxyong/maven/Recovery/images/download.svg) ](https://bintray.com/sunzxyong/maven/Recovery/_latestVersion)
 
-[中文文档]()
+[中文文档](https://github.com/Sunzxyong/Recovery/blob/master/README-Chinese.md)
 
 # **Introduce**
 
