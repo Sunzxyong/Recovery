@@ -5,17 +5,17 @@ A crash recovery framework!
 
 [ ![Download](https://api.bintray.com/packages/sunzxyong/maven/Recovery/images/download.svg) ](https://bintray.com/sunzxyong/maven/Recovery/_latestVersion)
 
-[中文文档]()
+[英文文档](https://github.com/Sunzxyong/Recovery/blob/master/README.md)
 
 # **Introduce**
 
-“Recovery” can help you to automatic processing app crash at run time.It provides the following functions
+“Recovery”帮助你自动处理程序在运行时的Crash，它含有以下几点功能
 
-* Automatic recovery activity stack and data.
-* Support to recover the top activity
-* To view and save of crash info.
-* Restart and clear the cache.
-* Twice failed to recover in a minute, will no longer to recover but to restart
+* 自动恢复Activity Stack和数据
+* 支持只恢复栈顶Activity
+* Crash信息的显示与保存
+* 应用重启或者清空缓存
+* 一分钟内两次恢复失败不再恢复而进行重启应用
 
 # **Art**
 ![Recovery](http://7xswxf.com2.z0.glb.qiniucdn.com/blog/Recovery.png)
@@ -39,7 +39,7 @@ A crash recovery framework!
 		</dependency>
 ```
 ## **Init**
-In a custom Application performs initialization
+在你自定义的Application中初始化
 
 ```java
         Recovery.getInstance()
@@ -55,11 +55,11 @@ In a custom Application performs initialization
 
 | Argument | Type | Function |
 | :-: | :-: | :-: |
-| debug | boolean | Whether to open the debug mode |
-| recoverInBackgroud | boolean | When the App in the background, whether to restore the stack  |
-| recoverStack | boolean | Whether to restore the activity stack,else to restore the top activity |
-| mainPage | Class<? extends Activity> | The back page |
-| callback | RecoveryCallback | Crash info callback |
+| debug | boolean | 是否开启debug模式 |
+| recoverInBackgroud | boolean | 当应用在后台时发生Crash，是否需要进行恢复  |
+| recoverStack | boolean | 是否恢复整个Activity Stack，否则将恢复栈顶Activity |
+| mainPage | Class<? extends Activity> | 回退的界面 |
+| callback | RecoveryCallback | 发生Crash时的回调 |
 
 ## **Callback**
 
@@ -76,7 +76,7 @@ public interface RecoveryCallback {
 
 ## **Custom Theme**
 
-Rewrite in your styles file：
+自定义RecoveryActivity的主题，需重写以下styles属性：
 
 ```
     <color name="recoveryColorPrimary">#F44336</color>
