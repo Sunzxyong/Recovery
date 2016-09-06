@@ -20,7 +20,7 @@ A crash recovery framework!
 * Twice failed to recover in a minute, will no longer to recover but to restart
 
 # **Art**
-![Recovery](http://7xswxf.com2.z0.glb.qiniucdn.com/blog/Recovery.png)
+![recovery](http://7xswxf.com2.z0.glb.qiniucdn.com/blog/Recovery.png)
 
 # **Usage**
 ## **Reference**
