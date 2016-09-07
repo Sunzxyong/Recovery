@@ -206,8 +206,10 @@ public final class RecoveryActivity extends AppCompatActivity {
         mCrashTipsTv.setText(String.format(getResources().getString(R.string.recovery_crash_tips_msg), RecoveryUtil.getAppName(this)));
 
         if (mExceptionData != null) {
-            mExceptionTypeTv.setText(String.format(getResources().getString(R.string.recovery_exception_type), mExceptionData.type));
-            mClassNameTv.setText(String.format(getResources().getString(R.string.recovery_class_name), mExceptionData.className));
+            String type = mExceptionData.type == null ? "" : mExceptionData.type;
+            String name = mExceptionData.className == null ? "" : mExceptionData.className;
+            mExceptionTypeTv.setText(String.format(getResources().getString(R.string.recovery_exception_type), type.substring(type.lastIndexOf('.') + 1)));
+            mClassNameTv.setText(String.format(getResources().getString(R.string.recovery_class_name), name.substring(name.lastIndexOf('.') + 1)));
             mMethodNameTv.setText(String.format(getResources().getString(R.string.recovery_method_name), mExceptionData.methodName));
             mLineNumberTv.setText(String.format(getResources().getString(R.string.recovery_line_number), mExceptionData.lineNumber));
         }
