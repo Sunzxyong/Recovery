@@ -30,8 +30,22 @@ dependencies {
     compile 'com.android.support:appcompat-v7:24.2.0'
     testCompile 'junit:junit:4.12'
 }
+
 ext {
-    PUBLISH_GROUP_ID = 'com.zxy.android'
-    PUBLISH_VERSION = '0.0.2'
+    upload_group_id = 'com.zxy.android'
+    upload_version = '0.0.3'
+
+    site_url = 'https://github.com/Sunzxyong/Recovery'
+    git_url = 'https://github.com/Sunzxyong/Recovery.git'
+    git_issue_url = 'https://github.com/Sunzxyong/Recovery/issues'
+
+    bintray_pkg_repo = 'maven'
+    bintray_pkg_name = 'Recovery'
+    bintray_pkg_desc = 'A crash recover framework'
+
+    developer_id = 'Sunzxyong'
+    developer_name = 'zhengxiaoyong'
+    developer_email = '1175151739@qq.com'
 }
+
 apply from: 'publish.gradle'
