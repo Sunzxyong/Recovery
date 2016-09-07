@@ -7,50 +7,51 @@ A crash recovery framework!
 
 [中文文档](https://github.com/Sunzxyong/Recovery/blob/master/README-Chinese.md)
 
-# **Introduce**
+# **Introduction**
 
-[Blog Introduce](http://zhengxiaoyong.me/2016/09/05/Android%E8%BF%90%E8%A1%8C%E6%97%B6Crash%E8%87%AA%E5%8A%A8%E6%81%A2%E5%A4%8D%E6%A1%86%E6%9E%B6-Recovery)
+[Blog entry with introduction](http://zhengxiaoyong.me/2016/09/05/Android%E8%BF%90%E8%A1%8C%E6%97%B6Crash%E8%87%AA%E5%8A%A8%E6%81%A2%E5%A4%8D%E6%A1%86%E6%9E%B6-Recovery)
 
-“Recovery” can help you to automatic processing app crash at run time.It provides the following functions
+“Recovery” can help you to automatically handle application crash in runtime. It provides you with following functionality:
 
-* Automatic recovery activity stack and data.
-* Support to recover the top activity
-* To view and save of crash info.
-* Restart and clear the cache.
-* Twice failed to recover in a minute, will no longer to recover but to restart
+* Automatic recovery activity with stack and data;
+* Ability to recover to the top activity;
+* A way to view and save crash info;
+* Ability to restart and clear the cache;
+* Allows you to do a restart instead of recovering if failed twice in one minute.
 
 # **Art**
 ![recovery](http://7xswxf.com2.z0.glb.qiniucdn.com/blog/Recovery.png)
 
 # **Usage**
-## **Reference**
-**Gradle**
+## **Installation**
+**Using Gradle**
 
-```
-		compile 'com.zxy.android:recovery:0.0.3'
+```gradle
+compile 'com.zxy.android:recovery:0.0.3'
 ```
 
-**Maven**
+**Using Maven**
 
+```xml
+<dependency>
+  	<groupId>com.zxy.android</groupId>
+  	<artifactId>recovery</artifactId>
+  	<version>0.0.3</version>
+  	<type>pom</type>
+</dependency>
 ```
-		<dependency>
-  			<groupId>com.zxy.android</groupId>
-  			<artifactId>recovery</artifactId>
-  			<version>0.0.3</version>
-  			<type>pom</type>
-		</dependency>
-```
-## **Init**
-In a custom Application performs initialization
+
+## **Initialization**
+You can use this code sample to initialize Recovery in your application:
 
 ```java
-        Recovery.getInstance()
-                .debug(true)
-                .recoverInBackground(false)
-                .recoverStack(true)
-                .mainPage(MainActivity.class)
-                .callback(new MyCrashCallback())
-                .init(this);
+Recovery.getInstance()
+        .debug(true)
+        .recoverInBackground(false)
+        .recoverStack(true)
+        .mainPage(MainActivity.class)
+        .callback(new MyCrashCallback())
+        .init(this);
 ```
 
 ## **Arguments**
@@ -59,33 +60,39 @@ In a custom Application performs initialization
 | :-: | :-: | :-: |
 | debug | boolean | Whether to open the debug mode |
 | recoverInBackgroud | boolean | When the App in the background, whether to restore the stack  |
-| recoverStack | boolean | Whether to restore the activity stack,else to restore the top activity |
-| mainPage | Class<? extends Activity> | The back page |
-| callback | RecoveryCallback | Crash info callback |
+| recoverStack | boolean | Whether to restore the activity stack, or to restore the top activity |
+| mainPage | Class<? extends Activity> | Initial page activity |
+| callback | RecoveryCallback | Crash info callback|
 
 ## **Callback**
 
-```
+```java
 public interface RecoveryCallback {
 
     void stackTrace(String stackTrace);
 
     void cause(String cause);
 
-    void exception(String throwExceptionType, String throwClassName, String throwMethodName, int throwLineNumber);
+    void exception(
+    	String throwExceptionType,
+    	String throwClassName,
+    	String throwMethodName,
+    	int throwLineNumber
+    );
 }
 ```
 
 ## **Custom Theme**
 
-Rewrite in your styles file：
+You can customize UI by setting these properties in your styles file:
 
+```xml
+<color name="recoveryColorPrimary">#F44336</color>
+<color name="recoveryColorPrimaryDark">#D32F2F</color>
+<color name="recoveryColorAccent">#BDBDBD</color>
+<color name="recoveryTextColor">#FFFFFF</color>
 ```
-    <color name="recoveryColorPrimary">#F44336</color>
-    <color name="recoveryColorPrimaryDark">#D32F2F</color>
-    <color name="recoveryColorAccent">#BDBDBD</color>
-    <color name="recoveryTextColor">#FFFFFF</color>
-```
+
 ## **Crash File Path**
 > {SDCard Dir}/Android/data/{packageName}/files/recovery_crash/
 
