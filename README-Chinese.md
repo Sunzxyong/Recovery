@@ -52,7 +52,11 @@ A crash recovery framework!
                 .callback(new MyCrashCallback())
                 .init(this);
 ```
+并且在manifest中授权
 
+```
+android.permission.GET_TASKS
+```
 ## **Arguments**
 
 | Argument | Type | Function |

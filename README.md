@@ -53,7 +53,11 @@ Recovery.getInstance()
         .callback(new MyCrashCallback())
         .init(this);
 ```
+and grant permission:
 
+```
+android.permission.GET_TASKS
+```
 ## **Arguments**
 
 | Argument | Type | Function |
