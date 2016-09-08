@@ -20,7 +20,7 @@ A crash recovery framework!
 * 一分钟内两次恢复失败不再恢复而进行重启应用
 
 # **Art**
-![recovery](http://7xswxf.com2.z0.glb.qiniucdn.com/blog/Recovery.png)
+![recovery](http://7xswxf.com2.z0.glb.qiniucdn.com/blog/Recovery_main.png)
 
 # **Usage**
 ## **Reference**

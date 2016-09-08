@@ -20,7 +20,7 @@ A crash recovery framework!
 * Allows you to do a restart instead of recovering if failed twice in one minute.
 
 # **Art**
-![recovery](http://7xswxf.com2.z0.glb.qiniucdn.com/blog/Recovery.png)
+![recovery](http://7xswxf.com2.z0.glb.qiniucdn.com/blog/Recovery_main.png)
 
 # **Usage**
 ## **Installation**
