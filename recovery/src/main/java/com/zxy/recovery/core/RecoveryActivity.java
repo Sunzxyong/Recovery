@@ -273,6 +273,7 @@ public final class RecoveryActivity extends AppCompatActivity {
                 }
             }
             if (!availableIntents.isEmpty()) {
+                availableIntents.get(0).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 availableIntents.get(availableIntents.size() - 1).putExtra(RECOVERY_MODE_ACTIVE, true);
                 startActivities(availableIntents.toArray(new Intent[availableIntents.size()]));
                 overridePendingTransition(0, 0);

@@ -14,13 +14,14 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
+        Log.e("zxy", "Recovery: init");
         Recovery.getInstance()
                 .debug(true)
                 .recoverInBackground(false)
                 .recoverStack(true)
                 .mainPage(MainActivity.class)
                 .callback(new MyCrashCallback())
+                .silent(false, Recovery.SilentMode.RECOVER_ACTIVITY_STACK)
                 .init(this);
     }
 

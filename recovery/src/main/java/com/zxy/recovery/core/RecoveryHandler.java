@@ -90,10 +90,10 @@ final class RecoveryHandler implements Thread.UncaughtExceptionHandler {
 
         if (!DefaultHandlerUtil.isSystemDefaultUncaughtExceptionHandler(mDefaultUncaughtExceptionHandler)) {
             if (mDefaultUncaughtExceptionHandler == null)
-                startRecoverActivity();
+                recover();
             mDefaultUncaughtExceptionHandler.uncaughtException(t, e);
         } else {
-            startRecoverActivity();
+            recover();
         }
     }
 
@@ -102,12 +102,20 @@ final class RecoveryHandler implements Thread.UncaughtExceptionHandler {
         return this;
     }
 
-    private void startRecoverActivity() {
+    private void recover() {
         if (RecoveryUtil.isAppInBackground(Recovery.getInstance().getContext())
                 && !Recovery.getInstance().isRecoverInBackground()) {
             killProcess();
             return;
         }
+        if (Recovery.getInstance().isSilentEnabled()) {
+            startRecoverService();
+        } else {
+            startRecoverActivity();
+        }
+    }
+
+    private void startRecoverActivity() {
         Intent intent = new Intent();
         intent.setClass(Recovery.getInstance().getContext(), RecoveryActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
@@ -124,6 +132,18 @@ final class RecoveryHandler implements Thread.UncaughtExceptionHandler {
         if (mCause != null)
             intent.putExtra(RecoveryStore.EXCEPTION_CAUSE, mCause);
         Recovery.getInstance().getContext().startActivity(intent);
+        killProcess();
+    }
+
+    private void startRecoverService() {
+        Intent intent = new Intent();
+        intent.setClass(Recovery.getInstance().getContext(), RecoveryService.class);
+        if (RecoveryStore.getInstance().getIntent() != null)
+            intent.putExtra(RecoveryStore.RECOVERY_INTENT, RecoveryStore.getInstance().getIntent());
+        if (!RecoveryStore.getInstance().getIntents().isEmpty())
+            intent.putParcelableArrayListExtra(RecoveryStore.RECOVERY_INTENTS, RecoveryStore.getInstance().getIntents());
+        intent.putExtra(RecoveryService.RECOVERY_SILENT_MODE_VALUE, Recovery.getInstance().getSilentMode().getValue());
+        RecoveryService.start(Recovery.getInstance().getContext(), intent);
         killProcess();
     }
 
