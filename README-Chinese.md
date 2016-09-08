@@ -27,7 +27,7 @@ A crash recovery framework!
 **Gradle**
 
 ```
-		compile 'com.zxy.android:recovery:0.0.3'
+		compile 'com.zxy.android:recovery:0.0.5'
 ```
 
 **Maven**
@@ -36,12 +36,12 @@ A crash recovery framework!
 		<dependency>
   			<groupId>com.zxy.android</groupId>
   			<artifactId>recovery</artifactId>
-  			<version>0.0.3</version>
+  			<version>0.0.5</version>
   			<type>pom</type>
 		</dependency>
 ```
 ## **Init**
-在你自定义的Application中初始化
+你可以使用类似如下初始化代码在你自定义的Application中进行初始化：
 
 ```java
         Recovery.getInstance()
@@ -57,6 +57,17 @@ A crash recovery framework!
 ```
 android.permission.GET_TASKS
 ```
+
+如果你不想在应用发生Crash时显示RecoveryActivity，你可以使用静默恢复来进行无界面的恢复你的应用，那么请使用类似如下初始化代码在你自定义的Application中进行初始化：
+
+```java
+Recovery.getInstance()
+        .debug(true)
+        .recoverInBackground(false)
+        .silent(false, Recovery.SilentMode.RECOVER_ACTIVITY_STACK)
+        .init(this);
+```
+
 ## **Arguments**
 
 | Argument | Type | Function |
@@ -66,6 +77,13 @@ android.permission.GET_TASKS
 | recoverStack | boolean | 是否恢复整个Activity Stack，否则将恢复栈顶Activity |
 | mainPage | Class<? extends Activity> | 回退的界面 |
 | callback | RecoveryCallback | 发生Crash时的回调 |
+| silent | boolean,SilentMode | 是否使用静默恢复，如果设置为true的情况下，那么在发生Crash时将不显示RecoveryActivity界面来进行恢复，而是自动的恢复Activity的堆栈和数据，也就是无界面恢复 |
+
+**SilentMode**
+1. RESTART - 重启应用
+2. RECOVER_ACTIVITY_STACK - 恢复Activity堆栈
+3. RECOVER_TOP_ACTIVITY - 恢复栈顶Activity
+4. RESTART_AND_CLEAR - 重启应用并清空缓存数据
 
 ## **Callback**
 
@@ -92,6 +110,9 @@ public interface RecoveryCallback {
 ```
 ## **Crash File Path**
 > {SDCard Dir}/Android/data/{packageName}/files/recovery_crash/
+
+## **Update history**
+`VERSION-0.0.5`——**支持静默恢复**
 
 # **LICENSE**
 

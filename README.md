@@ -27,7 +27,7 @@ A crash recovery framework!
 **Using Gradle**
 
 ```gradle
-compile 'com.zxy.android:recovery:0.0.3'
+compile 'com.zxy.android:recovery:0.0.5'
 ```
 
 **Using Maven**
@@ -36,7 +36,7 @@ compile 'com.zxy.android:recovery:0.0.3'
 <dependency>
   	<groupId>com.zxy.android</groupId>
   	<artifactId>recovery</artifactId>
-  	<version>0.0.3</version>
+  	<version>0.0.5</version>
   	<type>pom</type>
 </dependency>
 ```
@@ -58,6 +58,19 @@ and grant permission:
 ```
 android.permission.GET_TASKS
 ```
+
+If you don't want to show the RecoveryActivity when the application crash in runtime,you can use silence recover to restore your application.
+
+You can use this code sample to initialize Recovery in your application:
+
+```java
+Recovery.getInstance()
+        .debug(true)
+        .recoverInBackground(false)
+        .silent(false, Recovery.SilentMode.RECOVER_ACTIVITY_STACK)
+        .init(this);
+```
+
 ## **Arguments**
 
 | Argument | Type | Function |
@@ -66,7 +79,14 @@ android.permission.GET_TASKS
 | recoverInBackgroud | boolean | When the App in the background, whether to restore the stack  |
 | recoverStack | boolean | Whether to restore the activity stack, or to restore the top activity |
 | mainPage | Class<? extends Activity> | Initial page activity |
-| callback | RecoveryCallback | Crash info callback|
+| callback | RecoveryCallback | Crash info callback |
+| silent | boolean,SilentMode | Whether to use silence recover，if true it will not display RecoveryActivity and restore the activity stack automatically |
+
+**SilentMode**
+1. RESTART - Restart App
+2. RECOVER_ACTIVITY_STACK - Restore the activity stack
+3. RECOVER_TOP_ACTIVITY - Restore the top activity
+4. RESTART_AND_CLEAR - Restart App and clear data
 
 ## **Callback**
 
@@ -99,6 +119,10 @@ You can customize UI by setting these properties in your styles file:
 
 ## **Crash File Path**
 > {SDCard Dir}/Android/data/{packageName}/files/recovery_crash/
+
+----
+## **Update history**
+`VERSION-0.0.5`——**Support silent recovery**
 
 # **LICENSE**
 
