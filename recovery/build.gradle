@@ -11,8 +11,6 @@ android {
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
     }
     buildTypes {
         release {
@@ -24,16 +22,12 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
     compile 'com.android.support:appcompat-v7:24.2.0'
-    testCompile 'junit:junit:4.12'
 }
 
 ext {
     upload_group_id = 'com.zxy.android'
-    upload_version = '0.0.3'
+    upload_version = '0.0.5'
 
     site_url = 'https://github.com/Sunzxyong/Recovery'
     git_url = 'https://github.com/Sunzxyong/Recovery.git'
