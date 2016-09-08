@@ -83,10 +83,10 @@ Recovery.getInstance()
 | silent | boolean,SilentMode | Whether to use silence recover，if true it will not display RecoveryActivity and restore the activity stack automatically |
 
 **SilentMode**
-1. RESTART - Restart App
-2. RECOVER_ACTIVITY_STACK - Restore the activity stack
-3. RECOVER_TOP_ACTIVITY - Restore the top activity
-4. RESTART_AND_CLEAR - Restart App and clear data
+> 1. RESTART - Restart App
+> 2. RECOVER_ACTIVITY_STACK - Restore the activity stack
+> 3. RECOVER_TOP_ACTIVITY - Restore the top activity
+> 4. RESTART_AND_CLEAR - Restart App and clear data
 
 ## **Callback**
 

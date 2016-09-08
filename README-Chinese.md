@@ -80,10 +80,10 @@ Recovery.getInstance()
 | silent | boolean,SilentMode | 是否使用静默恢复，如果设置为true的情况下，那么在发生Crash时将不显示RecoveryActivity界面来进行恢复，而是自动的恢复Activity的堆栈和数据，也就是无界面恢复 |
 
 **SilentMode**
-1. RESTART - 重启应用
-2. RECOVER_ACTIVITY_STACK - 恢复Activity堆栈
-3. RECOVER_TOP_ACTIVITY - 恢复栈顶Activity
-4. RESTART_AND_CLEAR - 重启应用并清空缓存数据
+> 1. RESTART - 重启应用
+> 2. RECOVER_ACTIVITY_STACK - 恢复Activity堆栈
+> 3. RECOVER_TOP_ACTIVITY - 恢复栈顶Activity
+> 4. RESTART_AND_CLEAR - 重启应用并清空缓存数据
 
 ## **Callback**
 
