@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
 
+import com.zxy.recovery.tools.RecoverySilentSharedPrefsUtil;
 import com.zxy.recovery.tools.RecoveryUtil;
 
 import java.util.ArrayList;
@@ -29,6 +30,13 @@ public class RecoveryService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+
+        if (RecoverySilentSharedPrefsUtil.shouldClearAppNotRestart()) {
+            //If restore failed twice within 30 seconds, will only delete data and not restored.
+            RecoverySilentSharedPrefsUtil.clear();
+            stopSelf();
+            killProcess();
+        }
 
         Recovery.SilentMode mode = getRecoverySilentMode(intent);
 

@@ -61,6 +61,7 @@ public class Recovery {
             throw new RecoveryException("Context can not be null!");
         if (!(context instanceof Application))
             context = context.getApplicationContext();
+//        if (!RecoveryUtil.isMainProcess(context)) return;
         mContext = context;
         registerRecoveryHandler();
         registerRecoveryLifecycleCallback();

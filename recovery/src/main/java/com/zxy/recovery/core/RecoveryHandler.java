@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import com.zxy.recovery.callback.RecoveryCallback;
 import com.zxy.recovery.tools.DefaultHandlerUtil;
 import com.zxy.recovery.tools.RecoverySharedPrefsUtil;
+import com.zxy.recovery.tools.RecoverySilentSharedPrefsUtil;
 import com.zxy.recovery.tools.RecoveryUtil;
 
 import java.io.PrintWriter;
@@ -37,7 +38,11 @@ final class RecoveryHandler implements Thread.UncaughtExceptionHandler {
     @Override
     public synchronized void uncaughtException(Thread t, Throwable e) {
 
-        RecoverySharedPrefsUtil.recordCrashData();
+        if (Recovery.getInstance().isSilentEnabled()) {
+            RecoverySilentSharedPrefsUtil.recordCrashData();
+        } else {
+            RecoverySharedPrefsUtil.recordCrashData();
+        }
 
         StringWriter sw = new StringWriter();
         PrintWriter pw = new PrintWriter(sw);
@@ -86,6 +91,7 @@ final class RecoveryHandler implements Thread.UncaughtExceptionHandler {
             mCallback.stackTrace(stackTrace);
             mCallback.cause(cause);
             mCallback.exception(exceptionType, throwClassName, throwMethodName, throwLineNumber);
+            mCallback.throwable(e);
         }
 
         if (!DefaultHandlerUtil.isSystemDefaultUncaughtExceptionHandler(mDefaultUncaughtExceptionHandler)) {

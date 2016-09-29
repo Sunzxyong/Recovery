@@ -10,4 +10,6 @@ public interface RecoveryCallback {
     void cause(String cause);
 
     void exception(String throwExceptionType, String throwClassName, String throwMethodName, int throwLineNumber);
+
+    void throwable(Throwable throwable);
 }
