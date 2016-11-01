@@ -1,9 +1,11 @@
 package com.zxy.recovery.core;
 
+import java.io.Serializable;
+
 /**
  * Created by zhengxiaoyong on 16/8/30.
  */
-public class CrashData {
+public class CrashData implements Serializable {
 
     public long crashTime;
 

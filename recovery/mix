@@ -1,0 +1,4 @@
+-ignorewarnings
+-keepattributes Signature
+-keepclasseswithmembers class * implements java.io.Serializable {*;}
+-keepclasseswithmembers class com.zxy.recovery.core.Recovery {*;}

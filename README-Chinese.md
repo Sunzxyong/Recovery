@@ -27,7 +27,7 @@ A crash recovery framework!
 **Gradle**
 
 ```
-		compile 'com.zxy.android:recovery:0.0.6'
+		compile 'com.zxy.android:recovery:0.0.7'
 ```
 
 **Maven**
@@ -36,7 +36,7 @@ A crash recovery framework!
 		<dependency>
   			<groupId>com.zxy.android</groupId>
   			<artifactId>recovery</artifactId>
-  			<version>0.0.6</version>
+  			<version>0.0.7</version>
   			<type>pom</type>
 		</dependency>
 ```
@@ -114,6 +114,7 @@ public interface RecoveryCallback {
 ## **Update history**
 `VERSION-0.0.5`——**支持静默恢复**
 `VERSION-0.0.6`——**加强静默恢复模式的保护**
+`VERSION-0.0.7`——**添加混淆配置**
 
 # **LICENSE**
 
