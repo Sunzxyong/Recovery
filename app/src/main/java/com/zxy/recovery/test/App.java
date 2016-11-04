@@ -27,6 +27,7 @@ public class App extends Application {
                 .mainPage(MainActivity.class)
                 .callback(new MyCrashCallback())
                 .silent(false, Recovery.SilentMode.RECOVER_ACTIVITY_STACK)
+                .skip(TestActivity.class)
                 .init(this);
     }
 

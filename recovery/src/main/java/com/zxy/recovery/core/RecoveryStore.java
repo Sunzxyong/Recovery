@@ -63,7 +63,7 @@ public final class RecoveryStore {
     }
 
     public boolean verifyActivity(Activity activity) {
-        return activity != null && (!RecoveryActivity.class.isInstance(activity) || !Recovery.getInstance().getSkipActivities().contains(activity.getClass()));
+        return activity != null && !Recovery.getInstance().getSkipActivities().contains(activity.getClass()) && !RecoveryActivity.class.isInstance(activity);
     }
 
     public List<WeakReference<Activity>> getRunningActivities() {
