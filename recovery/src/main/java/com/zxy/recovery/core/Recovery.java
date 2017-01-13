@@ -104,7 +104,8 @@ public class Recovery {
         return this;
     }
 
-    public Recovery skip(Class<? extends Activity>... activities) {
+    @SafeVarargs
+    public final Recovery skip(Class<? extends Activity>... activities) {
         if (activities == null)
             return this;
         mSkipActivities.addAll(Arrays.asList(activities));

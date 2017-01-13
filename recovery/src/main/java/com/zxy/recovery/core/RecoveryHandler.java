@@ -95,8 +95,10 @@ final class RecoveryHandler implements Thread.UncaughtExceptionHandler {
         }
 
         if (!DefaultHandlerUtil.isSystemDefaultUncaughtExceptionHandler(mDefaultUncaughtExceptionHandler)) {
-            if (mDefaultUncaughtExceptionHandler == null)
+            if (mDefaultUncaughtExceptionHandler == null) {
                 recover();
+                return;
+            }
             mDefaultUncaughtExceptionHandler.uncaughtException(t, e);
         } else {
             recover();

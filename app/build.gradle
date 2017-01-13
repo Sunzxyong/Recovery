@@ -3,6 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.0"
+    resourcePrefix ""
     defaultConfig {
         applicationId "com.zxy.recovery.test"
         minSdkVersion 14

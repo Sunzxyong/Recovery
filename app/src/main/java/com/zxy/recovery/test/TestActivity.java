@@ -34,6 +34,11 @@ public class TestActivity extends BaseActivity {
 //        }).start();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
     public void onClick(View view) {
         if (view.getId() == R.id.btn) {
             Activity activity = null;

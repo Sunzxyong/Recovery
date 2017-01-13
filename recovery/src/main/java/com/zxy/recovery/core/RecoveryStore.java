@@ -75,6 +75,23 @@ public final class RecoveryStore {
         mRunningActivities.add(weakReference);
     }
 
+    public boolean contains(Activity activity) {
+        if (activity == null)
+            return false;
+        int size = mRunningActivities.size();
+        for (int i = 0; i < size; i++) {
+            WeakReference<Activity> refer = mRunningActivities.get(i);
+            if (refer == null)
+                continue;
+            Activity tmp = refer.get();
+            if (tmp == null)
+                continue;
+            if (activity == tmp)
+                return true;
+        }
+        return false;
+    }
+
     public void removeActivity(Activity activity) {
         for (WeakReference<Activity> activityWeakReference : mRunningActivities) {
             if (activityWeakReference == null)

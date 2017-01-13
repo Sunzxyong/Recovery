@@ -19,12 +19,21 @@ public class RecoveryActivityLifecycleCallback implements Application.ActivityLi
 
     @Override
     public void onActivityCreated(final Activity activity, Bundle savedInstanceState) {
+    }
+
+    @Override
+    public void onActivityStarted(final Activity activity) {
         boolean isLegal = RecoveryStore.getInstance().verifyActivity(activity);
         if (!isLegal)
             return;
+
         if (activity.getIntent().getBooleanExtra(RecoveryActivity.RECOVERY_MODE_ACTIVE, false)) {
             Reflect.on(Recovery.class).method("registerRecoveryProxy").invoke(Recovery.getInstance());
         }
+
+        if (RecoveryStore.getInstance().contains(activity))
+            return;
+
         Window window = activity.getWindow();
         if (window != null) {
             View decorView = window.getDecorView();
@@ -39,10 +48,7 @@ public class RecoveryActivityLifecycleCallback implements Application.ActivityLi
                 }
             });
         }
-    }
 
-    @Override
-    public void onActivityStarted(Activity activity) {
     }
 
     @Override

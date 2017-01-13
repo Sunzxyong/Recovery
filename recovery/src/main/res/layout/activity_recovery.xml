@@ -6,30 +6,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E6E6E6"
-    android:fitsSystemWindows="true"
     tools:context="com.zxy.recovery.core.RecoveryActivity">
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:animateLayoutChanges="true"
-        android:background="?attr/colorPrimary"
-        android:elevation="@dimen/recovery_activity_toolbar_elevation"
-        android:fitsSystemWindows="true"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="@style/RecoveryTheme.AppBarOverlay"
-        app:popupTheme="@style/RecoveryTheme.PopupOverlay"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:animateLayoutChanges="true"
-        android:clipToPadding="false"
-        android:paddingTop="?attr/actionBarSize">
+        android:animateLayoutChanges="true">
 
         <include
             android:id="@+id/recovery_debug_layout"
@@ -95,4 +77,16 @@
                 android:textSize="@dimen/recovery_default_text_size"/>
         </LinearLayout>
     </RelativeLayout>
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        android:background="?attr/colorPrimary"
+        android:elevation="@dimen/recovery_activity_toolbar_elevation"
+        android:fitsSystemWindows="true"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/RecoveryTheme.AppBarOverlay"
+        app:popupTheme="@style/RecoveryTheme.PopupOverlay"/>
 </RelativeLayout>

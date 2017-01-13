@@ -2,6 +2,7 @@ package com.zxy.recovery.core;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -73,6 +75,8 @@ public final class RecoveryActivity extends AppCompatActivity {
 
     private TextView mCrashTipsTv;
 
+    private ScrollView mScrollView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,6 +89,7 @@ public final class RecoveryActivity extends AppCompatActivity {
 
     private void setupToolbar() {
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mToolbar.setAlpha(0.95f);
         setSupportActionBar(mToolbar);
         if (getSupportActionBar() != null)
             getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -138,6 +143,13 @@ public final class RecoveryActivity extends AppCompatActivity {
         mStackTraceTv = (TextView) findViewById(R.id.tv_stack_trace);
         mCauseTv = (TextView) findViewById(R.id.tv_cause);
         mCrashTipsTv = (TextView) findViewById(R.id.tv_crash_tips);
+        mScrollView = (ScrollView) findViewById(R.id.scrollView);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            mScrollView.setPadding(0, RecoveryUtil.dp2px(getApplication(), 56), 0, 0);
+        } else {
+            mScrollView.setPadding(0, RecoveryUtil.dp2px(getApplication(), 72), 0, 0);
+        }
     }
 
     private void initData() {
