@@ -18,6 +18,8 @@ public class DefaultHandlerUtil {
     }
 
     public static boolean isSystemDefaultUncaughtExceptionHandler(Thread.UncaughtExceptionHandler handler) {
+        if (handler == null)
+            return false;
         Thread.UncaughtExceptionHandler defHandler = getDefaultUncaughtExceptionHandler();
         return defHandler != null && defHandler.getClass().isInstance(handler);
     }

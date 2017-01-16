@@ -48,6 +48,11 @@ public class Recovery {
 
     private List<Class<? extends Activity>> mSkipActivities = new ArrayList<>();
 
+    /**
+     * Whether to enter recovery mode.
+     */
+    private boolean isRecoverEnabled = true;
+
     private Recovery() {
     }
 
@@ -112,6 +117,11 @@ public class Recovery {
         return this;
     }
 
+    public Recovery recoverEnabled(boolean enabled) {
+        this.isRecoverEnabled = enabled;
+        return this;
+    }
+
     private void registerRecoveryHandler() {
         RecoveryHandler.newInstance(Thread.getDefaultUncaughtExceptionHandler()).setCallback(mCallback).register();
     }
@@ -155,6 +165,10 @@ public class Recovery {
 
     boolean isRecoverStack() {
         return isRecoverStack;
+    }
+
+    boolean isRecoverEnabled() {
+        return isRecoverEnabled;
     }
 
     Class<? extends Activity> getMainPageClass() {

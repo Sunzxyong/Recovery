@@ -19,16 +19,21 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
         Log.e("zxy", "Recovery: init");
         Recovery.getInstance()
                 .debug(true)
                 .recoverInBackground(false)
                 .recoverStack(true)
                 .mainPage(MainActivity.class)
+                .recoverEnabled(true)
                 .callback(new MyCrashCallback())
                 .silent(false, Recovery.SilentMode.RECOVER_ACTIVITY_STACK)
 //                .skip(TestActivity.class)
                 .init(this);
+
+        MyCrashHandler.register();
+
     }
 
     static final class MyCrashCallback implements RecoveryCallback {

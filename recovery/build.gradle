@@ -27,7 +27,7 @@ dependencies {
 
 ext {
     upload_group_id = 'com.zxy.android'
-    upload_version = '0.0.9'
+    upload_version = '0.1.0'
 
     site_url = 'https://github.com/Sunzxyong/Recovery'
     git_url = 'https://github.com/Sunzxyong/Recovery.git'

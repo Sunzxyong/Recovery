@@ -38,10 +38,12 @@ final class RecoveryHandler implements Thread.UncaughtExceptionHandler {
     @Override
     public synchronized void uncaughtException(Thread t, Throwable e) {
 
-        if (Recovery.getInstance().isSilentEnabled()) {
-            RecoverySilentSharedPrefsUtil.recordCrashData();
-        } else {
-            RecoverySharedPrefsUtil.recordCrashData();
+        if (Recovery.getInstance().isRecoverEnabled()) {
+            if (Recovery.getInstance().isSilentEnabled()) {
+                RecoverySilentSharedPrefsUtil.recordCrashData();
+            } else {
+                RecoverySharedPrefsUtil.recordCrashData();
+            }
         }
 
         StringWriter sw = new StringWriter();
@@ -96,13 +98,16 @@ final class RecoveryHandler implements Thread.UncaughtExceptionHandler {
 
         if (!DefaultHandlerUtil.isSystemDefaultUncaughtExceptionHandler(mDefaultUncaughtExceptionHandler)) {
             if (mDefaultUncaughtExceptionHandler == null) {
-                recover();
+                killProcess();
                 return;
             }
+            recover();
             mDefaultUncaughtExceptionHandler.uncaughtException(t, e);
         } else {
             recover();
+            killProcess();
         }
+
     }
 
     RecoveryHandler setCallback(RecoveryCallback callback) {
@@ -111,11 +116,15 @@ final class RecoveryHandler implements Thread.UncaughtExceptionHandler {
     }
 
     private void recover() {
+        if (!Recovery.getInstance().isRecoverEnabled())
+            return;
+
         if (RecoveryUtil.isAppInBackground(Recovery.getInstance().getContext())
                 && !Recovery.getInstance().isRecoverInBackground()) {
             killProcess();
             return;
         }
+
         if (Recovery.getInstance().isSilentEnabled()) {
             startRecoverService();
         } else {
@@ -135,12 +144,9 @@ final class RecoveryHandler implements Thread.UncaughtExceptionHandler {
         intent.putExtra(RecoveryStore.IS_DEBUG, Recovery.getInstance().isDebug());
         if (mExceptionData != null)
             intent.putExtra(RecoveryStore.EXCEPTION_DATA, mExceptionData);
-        if (mStackTrace != null)
-            intent.putExtra(RecoveryStore.STACK_TRACE, mStackTrace);
-        if (mCause != null)
-            intent.putExtra(RecoveryStore.EXCEPTION_CAUSE, mCause);
+        intent.putExtra(RecoveryStore.STACK_TRACE, String.valueOf(mStackTrace));
+        intent.putExtra(RecoveryStore.EXCEPTION_CAUSE, String.valueOf(mCause));
         Recovery.getInstance().getContext().startActivity(intent);
-        killProcess();
     }
 
     private void startRecoverService() {
@@ -152,7 +158,6 @@ final class RecoveryHandler implements Thread.UncaughtExceptionHandler {
             intent.putParcelableArrayListExtra(RecoveryStore.RECOVERY_INTENTS, RecoveryStore.getInstance().getIntents());
         intent.putExtra(RecoveryService.RECOVERY_SILENT_MODE_VALUE, Recovery.getInstance().getSilentMode().getValue());
         RecoveryService.start(Recovery.getInstance().getContext(), intent);
-        killProcess();
     }
 
     void register() {
