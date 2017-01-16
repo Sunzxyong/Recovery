@@ -113,6 +113,8 @@ public interface RecoveryCallback {
     	String throwMethodName,
     	int throwLineNumber
     );
+    
+    void throwable(Throwable throwable);
 }
 ```
 
