@@ -3,7 +3,6 @@
           xmlns:tools="http://schemas.android.com/tools"
           package="com.zxy.recovery.test">
 
-    <uses-permission android:name="android.permission.GET_TASKS"/>
     <application
         android:name=".App"
         android:allowBackup="true"

@@ -26,7 +26,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile project(':recovery')
-//    compile 'com.zxy.android:recovery:0.0.2'
+//    compile 'com.zxy.android:recovery:0.1.0'
     compile 'com.android.support:appcompat-v7:24.2.0'
     compile 'com.android.support:design:24.2.0'
     testCompile 'junit:junit:4.12'
