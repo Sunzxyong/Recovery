@@ -29,7 +29,7 @@ public class App extends Application {
                 .recoverEnabled(true)
                 .callback(new MyCrashCallback())
                 .silent(false, Recovery.SilentMode.RECOVER_ACTIVITY_STACK)
-//                .skip(TestActivity.class)
+                .skip(TestActivity.class)
                 .init(this);
 
         MyCrashHandler.register();

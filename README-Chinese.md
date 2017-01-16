@@ -27,7 +27,7 @@ A crash recovery framework!
 **Gradle**
 
 ```
-		compile 'com.zxy.android:recovery:0.0.9'
+		compile 'com.zxy.android:recovery:0.1.0'
 ```
 
 **Maven**
@@ -36,7 +36,7 @@ A crash recovery framework!
 		<dependency>
   			<groupId>com.zxy.android</groupId>
   			<artifactId>recovery</artifactId>
-  			<version>0.0.9</version>
+  			<version>0.1.0</version>
   			<type>pom</type>
 		</dependency>
 ```
@@ -49,7 +49,10 @@ A crash recovery framework!
                 .recoverInBackground(false)
                 .recoverStack(true)
                 .mainPage(MainActivity.class)
+                .recoverEnabled(true)
                 .callback(new MyCrashCallback())
+                .silent(false, Recovery.SilentMode.RECOVER_ACTIVITY_STACK)
+                .skip(TestActivity.class)
                 .init(this);
 ```
 并且在manifest中授权
@@ -61,12 +64,19 @@ android.permission.GET_TASKS
 如果你不想在应用发生Crash时显示RecoveryActivity，你可以使用静默恢复来进行无界面的恢复你的应用，那么请使用类似如下初始化代码在你自定义的Application中进行初始化：
 
 ```java
-Recovery.getInstance()
-        .debug(true)
-        .recoverInBackground(false)
-        .silent(false, Recovery.SilentMode.RECOVER_ACTIVITY_STACK)
-        .init(this);
+        Recovery.getInstance()
+                .debug(true)
+                .recoverInBackground(false)
+                .recoverStack(true)
+                .mainPage(MainActivity.class)
+                .recoverEnabled(true)
+                .callback(new MyCrashCallback())
+                .silent(false, Recovery.SilentMode.RECOVER_ACTIVITY_STACK)
+                .skip(TestActivity.class)
+                .init(this);
 ```
+
+如果你仅仅需要在开发时显示RecoveryActivity界面来获取debug数据，而在线上版本不显示，那么可以设置`recoverEnabled(false);`
 
 ## **Arguments**
 
@@ -112,10 +122,12 @@ public interface RecoveryCallback {
 > {SDCard Dir}/Android/data/{packageName}/files/recovery_crash/
 
 ## **Update history**
-`VERSION-0.0.5`——**支持静默恢复**
-`VERSION-0.0.6`——**加强静默恢复模式的保护**
-`VERSION-0.0.7`——**添加混淆配置**
-`VERSION-0.0.8`——**增加可配置不需要恢复的Activity,方法:skip()**
+* `VERSION-0.0.5`——**支持静默恢复**
+* `VERSION-0.0.6`——**加强静默恢复模式的保护**
+* `VERSION-0.0.7`——**添加混淆配置**
+* `VERSION-0.0.8`——**增加可配置不需要恢复的Activity,方法:skip()**
+* `VERSION-0.0.9`——**更新UI和解决一些问题**
+* `VERSION-0.1.0`——**异常传递的优化,可在任意位置初始化Recovery框架,发布正式版本-0.1.0**
 
 # **LICENSE**
 

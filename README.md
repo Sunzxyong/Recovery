@@ -27,7 +27,7 @@ A crash recovery framework!
 **Using Gradle**
 
 ```gradle
-compile 'com.zxy.android:recovery:0.0.9'
+compile 'com.zxy.android:recovery:0.1.0'
 ```
 
 **Using Maven**
@@ -36,7 +36,7 @@ compile 'com.zxy.android:recovery:0.0.9'
 <dependency>
   	<groupId>com.zxy.android</groupId>
   	<artifactId>recovery</artifactId>
-  	<version>0.0.9</version>
+  	<version>0.1.0</version>
   	<type>pom</type>
 </dependency>
 ```
@@ -45,13 +45,16 @@ compile 'com.zxy.android:recovery:0.0.9'
 You can use this code sample to initialize Recovery in your application:
 
 ```java
-Recovery.getInstance()
-        .debug(true)
-        .recoverInBackground(false)
-        .recoverStack(true)
-        .mainPage(MainActivity.class)
-        .callback(new MyCrashCallback())
-        .init(this);
+        Recovery.getInstance()
+                .debug(true)
+                .recoverInBackground(false)
+                .recoverStack(true)
+                .mainPage(MainActivity.class)
+                .recoverEnabled(true)
+                .callback(new MyCrashCallback())
+                .silent(false, Recovery.SilentMode.RECOVER_ACTIVITY_STACK)
+                .skip(TestActivity.class)
+                .init(this);
 ```
 and grant permission:
 
@@ -64,12 +67,19 @@ If you don't want to show the RecoveryActivity when the application crash in run
 You can use this code sample to initialize Recovery in your application:
 
 ```java
-Recovery.getInstance()
-        .debug(true)
-        .recoverInBackground(false)
-        .silent(false, Recovery.SilentMode.RECOVER_ACTIVITY_STACK)
-        .init(this);
+        Recovery.getInstance()
+                .debug(true)
+                .recoverInBackground(false)
+                .recoverStack(true)
+                .mainPage(MainActivity.class)
+                .recoverEnabled(true)
+                .callback(new MyCrashCallback())
+                .silent(true, Recovery.SilentMode.RECOVER_ACTIVITY_STACK)
+                .skip(TestActivity.class)
+                .init(this);
 ```
+
+If you only need to display 'RecoveryActivity' page in development to obtain the debug data, and in the online version does not display, you can set up `recoverEnabled(false);`
 
 ## **Arguments**
 
@@ -122,10 +132,12 @@ You can customize UI by setting these properties in your styles file:
 
 ----
 ## **Update history**
-`VERSION-0.0.5`——**Support silent recovery**
-`VERSION-0.0.6`——**Strengthen the protection of silent restore mode**
-`VERSION-0.0.7`——**Add confusion configuration**
-`VERSION-0.0.8`——**Add the skip Activity features,method:skip()**
+* `VERSION-0.0.5`——**Support silent recovery**
+* `VERSION-0.0.6`——**Strengthen the protection of silent restore mode**
+* `VERSION-0.0.7`——**Add confusion configuration**
+* `VERSION-0.0.8`——**Add the skip Activity features,method:skip()**
+* `VERSION-0.0.9`——**Update the UI and solve some problems**
+* `VERSION-0.1.0`——**Optimization of crash exception delivery, initial Recovery framework can be in any position, release the official version-0.1.0**
 
 # **LICENSE**
 
