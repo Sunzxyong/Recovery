@@ -89,7 +89,13 @@ public class SharedPreferencesCompat {
         }
 
         public void apply() {
-            SharedPreferencesEditorCompat.apply(mEditor);
+            if (mEditor != null)
+                SharedPreferencesEditorCompat.apply(mEditor);
+        }
+
+        public void commit() {
+            if (mEditor != null)
+                SharedPreferencesEditorCompat.commit(mEditor);
         }
 
     }
@@ -133,6 +139,10 @@ public class SharedPreferencesCompat {
                     }
                 });
             }
+        }
+
+        static void commit(SharedPreferences.Editor editor) {
+            editor.commit();
         }
     }
 

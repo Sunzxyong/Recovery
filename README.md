@@ -27,7 +27,7 @@ A crash recovery framework!
 **Using Gradle**
 
 ```gradle
-compile 'com.zxy.android:recovery:0.1.0'
+compile 'com.zxy.android:recovery:0.1.1'
 ```
 
 **Using Maven**
@@ -36,7 +36,7 @@ compile 'com.zxy.android:recovery:0.1.0'
 <dependency>
   	<groupId>com.zxy.android</groupId>
   	<artifactId>recovery</artifactId>
-  	<version>0.1.0</version>
+  	<version>0.1.1</version>
   	<type>pom</type>
 </dependency>
 ```
