@@ -14,12 +14,21 @@ import com.zxy.recovery.exception.RecoveryException;
 import com.zxy.recovery.exception.ReflectException;
 
 import java.io.File;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
  * Created by zhengxiaoyong on 16/8/28.
  */
 public class RecoveryUtil {
+
+    private static final ThreadLocal<DateFormat> DATE_FORMAT_THREAD_LOCAL = new ThreadLocal<DateFormat>() {
+        @Override
+        protected DateFormat initialValue() {
+            return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        }
+    };
 
     private RecoveryUtil() {
         throw new RecoveryException("Stub!");
@@ -127,5 +136,9 @@ public class RecoveryUtil {
     public static int dp2px(Context context, float dpValue) {
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (dpValue * scale + 0.5f);
+    }
+
+    public static DateFormat getDateFormat() {
+        return DATE_FORMAT_THREAD_LOCAL.get();
     }
 }

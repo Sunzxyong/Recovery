@@ -25,10 +25,8 @@ import com.zxy.recovery.tools.Reflect;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Locale;
 
 /**
  * Created by zhengxiaoyong on 16/8/26.
@@ -311,8 +309,7 @@ public final class RecoveryActivity extends AppCompatActivity {
     }
 
     private boolean saveCrashData() {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA);
-        String date = format.format(new Date(System.currentTimeMillis()));
+        String date = RecoveryUtil.getDateFormat().format(new Date(System.currentTimeMillis()));
         File dir = new File(getExternalFilesDir(null) + File.separator + DEFAULT_CRASH_FILE_DIR_NAME);
         if (!dir.exists())
             dir.mkdirs();
