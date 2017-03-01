@@ -87,7 +87,6 @@ public final class RecoveryActivity extends AppCompatActivity {
 
     private void setupToolbar() {
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        mToolbar.setAlpha(0.95f);
         setSupportActionBar(mToolbar);
         if (getSupportActionBar() != null)
             getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -143,10 +142,8 @@ public final class RecoveryActivity extends AppCompatActivity {
         mCrashTipsTv = (TextView) findViewById(R.id.tv_crash_tips);
         mScrollView = (ScrollView) findViewById(R.id.scrollView);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            mScrollView.setPadding(0, RecoveryUtil.dp2px(getApplication(), 56), 0, 0);
-        } else {
-            mScrollView.setPadding(0, RecoveryUtil.dp2px(getApplication(), 72), 0, 0);
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+            mScrollView.setPadding(0, RecoveryUtil.dp2px(getApplication(), 16), 0, 0);
         }
     }
 
@@ -218,9 +215,13 @@ public final class RecoveryActivity extends AppCompatActivity {
         if (mExceptionData != null) {
             String type = mExceptionData.type == null ? "" : mExceptionData.type;
             String name = mExceptionData.className == null ? "" : mExceptionData.className;
+
             mExceptionTypeTv.setText(String.format(getResources().getString(R.string.recovery_exception_type), type.substring(type.lastIndexOf('.') + 1)));
+
             mClassNameTv.setText(String.format(getResources().getString(R.string.recovery_class_name), name.substring(name.lastIndexOf('.') + 1)));
+
             mMethodNameTv.setText(String.format(getResources().getString(R.string.recovery_method_name), mExceptionData.methodName));
+
             mLineNumberTv.setText(String.format(getResources().getString(R.string.recovery_line_number), mExceptionData.lineNumber));
         }
         mCauseTv.setText(String.valueOf(mCause));
