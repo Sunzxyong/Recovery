@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by zhengxiaoyong on 16/8/30.
  */
-public class ActivityStackCompat {
+class ActivityStackCompat {
 
     private static ActivityManager.AppTask getTopTaskAfterL(Context context) {
         ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);

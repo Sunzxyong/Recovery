@@ -2,9 +2,9 @@
 <resources>
 
     <style name="RecoveryTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">@color/recoveryColorPrimary</item>
-        <item name="colorPrimaryDark">@color/recoveryColorPrimaryDark</item>
-        <item name="colorAccent">@color/recoveryColorAccent</item>
+        <item name="colorPrimary">@color/recovery_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/recovery_colorPrimaryDark</item>
+        <item name="colorAccent">@color/recovery_colorAccent</item>
         <item name="android:windowBackground">@null</item>
     </style>
 

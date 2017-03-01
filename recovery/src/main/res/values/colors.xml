@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="recoveryColorPrimary">#F44336</color>
-    <color name="recoveryColorPrimaryDark">#D32F2F</color>
-    <color name="recoveryColorAccent">#BDBDBD</color>
-    <color name="recoveryTextColor">#FFFFFF</color>
+    <color name="recovery_colorPrimary">#2E2E36</color>
+    <color name="recovery_colorPrimaryDark">#2E2E36</color>
+    <color name="recovery_colorAccent">#BDBDBD</color>
+    <color name="recovery_textColor">#FFFFFF</color>
 </resources>

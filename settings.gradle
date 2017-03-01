@@ -1,1 +1,1 @@
-include ':app', ':recovery'
+include ':app', ':recovery', ':recovery-no-op'

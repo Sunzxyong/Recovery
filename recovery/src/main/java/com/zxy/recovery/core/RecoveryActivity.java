@@ -78,7 +78,7 @@ public final class RecoveryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recovery);
+        setContentView(R.layout.recovery_activity_recover);
         setupToolbar();
         initView();
         initData();
@@ -107,10 +107,10 @@ public final class RecoveryActivity extends AppCompatActivity {
         if (!isDebugMode)
             return false;
         if (isDebugModeActive) {
-            getMenuInflater().inflate(R.menu.menu_recovery_sub, menu);
+            getMenuInflater().inflate(R.menu.recovery_menu_sub, menu);
             return true;
         }
-        getMenuInflater().inflate(R.menu.menu_recovery, menu);
+        getMenuInflater().inflate(R.menu.recovery_menu, menu);
         return true;
     }
 

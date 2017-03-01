@@ -11,7 +11,6 @@ import android.os.Environment;
 
 import com.zxy.recovery.core.Recovery;
 import com.zxy.recovery.exception.RecoveryException;
-import com.zxy.recovery.exception.ReflectException;
 
 import java.io.File;
 import java.text.DateFormat;
@@ -36,7 +35,7 @@ public class RecoveryUtil {
 
     public static <T> T checkNotNull(T t, String message) {
         if (t == null)
-            throw new ReflectException(String.valueOf(message));
+            throw new RecoveryException(String.valueOf(message));
         return t;
     }
 

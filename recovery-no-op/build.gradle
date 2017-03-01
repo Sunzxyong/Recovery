@@ -1,10 +1,11 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
+
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.0"
-    resourcePrefix "recovery_"
+
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 24
@@ -21,7 +22,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:24.2.0'
 }
 
@@ -34,7 +35,7 @@ ext {
     git_issue_url = 'https://github.com/Sunzxyong/Recovery/issues'
 
     bintray_pkg_repo = 'maven'
-    bintray_pkg_name = 'Recovery'
+    bintray_pkg_name = 'Recovery-no-op'
     bintray_pkg_desc = 'A crash recover framework'
 
     developer_id = 'Sunzxyong'

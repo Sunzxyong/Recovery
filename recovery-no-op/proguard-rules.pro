@@ -15,8 +15,3 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
-
--ignorewarnings
--keepattributes Signature
--keepclasseswithmembers class * implements java.io.Serializable {*;}
--keepclasseswithmembers class com.zxy.recovery.core.Recovery {*;}

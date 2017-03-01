@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E6E6E6"
+    android:background="#3C4350"
     tools:context="com.zxy.recovery.core.RecoveryActivity">
 
     <RelativeLayout
@@ -15,7 +15,7 @@
 
         <include
             android:id="@+id/recovery_debug_layout"
-            layout="@layout/layout_recovery_debug"
+            layout="@layout/recovery_layout_debug"
             android:visibility="gone"/>
 
         <LinearLayout
@@ -53,7 +53,7 @@
                 android:layout_marginTop="@dimen/recovery_default_margin"
                 android:background="@drawable/recovery_default_btn_selector"
                 android:text="@string/recovery_recover"
-                android:textColor="@color/recoveryTextColor"
+                android:textColor="@color/recovery_textColor"
                 android:textSize="@dimen/recovery_default_text_size"/>
 
             <Button
@@ -63,7 +63,7 @@
                 android:layout_marginTop="@dimen/recovery_default_margin_8dp"
                 android:background="@drawable/recovery_default_btn_selector"
                 android:text="@string/recovery_restart"
-                android:textColor="@color/recoveryTextColor"
+                android:textColor="@color/recovery_textColor"
                 android:textSize="@dimen/recovery_default_text_size"/>
 
             <Button
@@ -73,7 +73,7 @@
                 android:layout_marginTop="@dimen/recovery_default_margin_8dp"
                 android:background="@drawable/recovery_default_btn_selector"
                 android:text="@string/recovery_restart_clear"
-                android:textColor="@color/recoveryTextColor"
+                android:textColor="@color/recovery_textColor"
                 android:textSize="@dimen/recovery_default_text_size"/>
         </LinearLayout>
     </RelativeLayout>
