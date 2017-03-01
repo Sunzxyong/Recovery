@@ -20,15 +20,23 @@ A crash recovery framework!
 * Allows you to do a restart instead of recovering if failed twice in one minute.
 
 # **Art**
-![recovery](http://7xswxf.com2.z0.glb.qiniucdn.com/blog/Recovery_main.png)
+![recovery](http://7xswxf.com2.z0.glb.qiniucdn.com//blog/recovery.jpg)
 
 # **Usage**
 ## **Installation**
 **Using Gradle**
 
 ```gradle
-compile 'com.zxy.android:recovery:0.1.2'
+    compile 'com.zxy.android:recovery:0.1.4'
 ```
+
+or
+
+```gradle
+    debugCompile 'com.zxy.android:recovery:0.1.4'
+    releaseCompile 'com.zxy.android:recovery-no-op:0.1.4'
+```
+
 
 **Using Maven**
 
@@ -36,7 +44,7 @@ compile 'com.zxy.android:recovery:0.1.2'
 <dependency>
   	<groupId>com.zxy.android</groupId>
   	<artifactId>recovery</artifactId>
-  	<version>0.1.2</version>
+  	<version>0.1.4</version>
   	<type>pom</type>
 </dependency>
 ```
@@ -55,11 +63,6 @@ You can use this code sample to initialize Recovery in your application:
                 .silent(false, Recovery.SilentMode.RECOVER_ACTIVITY_STACK)
                 .skip(TestActivity.class)
                 .init(this);
-```
-and grant permission:
-
-```
-android.permission.GET_TASKS
 ```
 
 If you don't want to show the RecoveryActivity when the application crash in runtime,you can use silence recover to restore your application.
@@ -123,10 +126,12 @@ public interface RecoveryCallback {
 You can customize UI by setting these properties in your styles file:
 
 ```xml
-<color name="recoveryColorPrimary">#F44336</color>
-<color name="recoveryColorPrimaryDark">#D32F2F</color>
-<color name="recoveryColorAccent">#BDBDBD</color>
-<color name="recoveryTextColor">#FFFFFF</color>
+    <color name="recovery_colorPrimary">#2E2E36</color>
+    <color name="recovery_colorPrimaryDark">#2E2E36</color>
+    <color name="recovery_colorAccent">#BDBDBD</color>
+    <color name="recovery_background">#3C4350</color>
+    <color name="recovery_textColor">#FFFFFF</color>
+    <color name="recovery_textColor_sub">#C6C6C6</color>
 ```
 
 ## **Crash File Path**
@@ -140,6 +145,8 @@ You can customize UI by setting these properties in your styles file:
 * `VERSION-0.0.8`——**Add the skip Activity features,method:skip()**
 * `VERSION-0.0.9`——**Update the UI and solve some problems**
 * `VERSION-0.1.0`——**Optimization of crash exception delivery, initial Recovery framework can be in any position, release the official version-0.1.0**
+* `VERSION-0.1.3`——**Add 'no-op' support,v0.1.3**
+* `VERSION-0.1.4`——**update default theme,v0.1.4**
 
 # **LICENSE**
 
