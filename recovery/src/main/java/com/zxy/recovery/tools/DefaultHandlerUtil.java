@@ -1,6 +1,8 @@
 package com.zxy.recovery.tools;
 
 
+import android.os.Build;
+
 import com.zxy.recovery.exception.RecoveryException;
 
 /**
@@ -13,8 +15,20 @@ public class DefaultHandlerUtil {
     }
 
     private static Thread.UncaughtExceptionHandler getDefaultUncaughtExceptionHandler() {
-        Object object = Reflect.on("com.android.internal.os.RuntimeInit$UncaughtHandler").constructor().newInstance();
-        return object == null ? null : (Thread.UncaughtExceptionHandler) object;
+        try {
+            Class<?> clazz;
+            if (Build.VERSION.SDK_INT >= 26) {
+                clazz = Class.forName("com.android.internal.os.RuntimeInit$KillApplicationHandler");
+            } else {
+                clazz = Class.forName("com.android.internal.os.RuntimeInit$UncaughtHandler");
+            }
+
+            Object object = clazz.getDeclaredConstructor().newInstance();
+            return (Thread.UncaughtExceptionHandler) object;
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public static boolean isSystemDefaultUncaughtExceptionHandler(Thread.UncaughtExceptionHandler handler) {

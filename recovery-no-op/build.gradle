@@ -1,14 +1,12 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
-apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.novoda.bintray-release'
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion "24.0.0"
+    compileSdkVersion 26
 
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 24
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
 
@@ -19,28 +17,31 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    lintOptions {
+        abortOnError false
+    }
+
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:24.2.0'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 }
 
-ext {
-    upload_group_id = 'com.zxy.android'
-    upload_version = RECOVERY_VERSION
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
-    site_url = 'https://github.com/Sunzxyong/Recovery'
-    git_url = 'https://github.com/Sunzxyong/Recovery.git'
-    git_issue_url = 'https://github.com/Sunzxyong/Recovery/issues'
-
-    bintray_pkg_repo = 'maven'
-    bintray_pkg_name = 'Recovery-no-op'
-    bintray_pkg_desc = 'A crash recover framework'
-
-    developer_id = 'Sunzxyong'
-    developer_name = 'zhengxiaoyong'
-    developer_email = '1175151739@qq.com'
+publish {
+    userOrg = 'sunzxyong'
+    uploadName = 'Recovery-no-op'
+    groupId = 'com.zxy.android'
+    artifactId = 'recovery-no-op'
+    publishVersion = RECOVERY_VERSION
+    repoName = 'maven'
+    dryRun = 'false'
+    desc = 'A crash recover framework'
+    website = 'https://github.com/Sunzxyong/Recovery'
+    issueTracker = 'https://github.com/Sunzxyong/Recovery/issues'
+    repository = 'https://github.com/Sunzxyong/Recovery.git'
+    bintrayUser = properties.getProperty("bintray.user")
+    bintrayKey = properties.getProperty("bintray.apikey")
 }
-
-apply from: 'publish.gradle'

@@ -27,14 +27,14 @@ A crash recovery framework!
 **Gradle**
 
 ```
-	compile 'com.zxy.android:recovery:0.1.4'
+	compile 'com.zxy.android:recovery:0.1.5'
 ```
 
 或者
 
 ```gradle
-    debugCompile 'com.zxy.android:recovery:0.1.4'
-    releaseCompile 'com.zxy.android:recovery-no-op:0.1.4'
+    debugCompile 'com.zxy.android:recovery:0.1.5'
+    releaseCompile 'com.zxy.android:recovery-no-op:0.1.5'
 ```
 
 
@@ -44,7 +44,7 @@ A crash recovery framework!
 		<dependency>
   			<groupId>com.zxy.android</groupId>
   			<artifactId>recovery</artifactId>
-  			<version>0.1.4</version>
+  			<version>0.1.5</version>
   			<type>pom</type>
 		</dependency>
 ```
@@ -134,9 +134,10 @@ public interface RecoveryCallback {
 * `VERSION-0.0.7`——**添加混淆配置**
 * `VERSION-0.0.8`——**增加可配置不需要恢复的Activity,方法:skip()**
 * `VERSION-0.0.9`——**更新UI和解决一些问题**
-* `VERSION-0.1.0`——**异常传递的优化,可在任意位置初始化Recovery框架,发布正式版本-0.1.0**
-* `VERSION-0.1.3`——**增加no-op包,v0.1.3**
-* `VERSION-0.1.4`——**更新默认主.4**
+* `VERSION-0.1.0`——**异常传递的优化,可在任意位置初始化Recovery框架,发布正式版本**
+* `VERSION-0.1.3`——**增加no-op包**
+* `VERSION-0.1.4`——**更新默认主题.**
+* `VERSION-0.1.5`——**fix 8.0+ hook bug**
 
 # **LICENSE**
 
