@@ -27,14 +27,14 @@ A crash recovery framework!
 **Using Gradle**
 
 ```gradle
-    compile 'com.zxy.android:recovery:0.1.5'
+    implementation 'com.zxy.android:recovery:0.1.6'
 ```
 
 or
 
 ```gradle
-    debugCompile 'com.zxy.android:recovery:0.1.5'
-    releaseCompile 'com.zxy.android:recovery-no-op:0.1.5'
+    debugImplementation 'com.zxy.android:recovery:0.1.6'
+    releaseImplementation 'com.zxy.android:recovery-no-op:0.1.6'
 ```
 
 
@@ -44,7 +44,7 @@ or
 <dependency>
   	<groupId>com.zxy.android</groupId>
   	<artifactId>recovery</artifactId>
-  	<version>0.1.5</version>
+  	<version>0.1.6</version>
   	<type>pom</type>
 </dependency>
 ```
@@ -148,6 +148,7 @@ You can customize UI by setting these properties in your styles file:
 * `VERSION-0.1.3`——**Add 'no-op' support**
 * `VERSION-0.1.4`——**update default theme**
 * `VERSION-0.1.5`——**fix 8.0+ hook bug**
+* `VERSION-0.1.6`——**update**
 
 # **LICENSE**
 
