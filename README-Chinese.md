@@ -27,14 +27,14 @@ A crash recovery framework!
 **Gradle**
 
 ```
-	implementation 'com.zxy.android:recovery:0.1.6'
+	implementation 'com.zxy.android:recovery:1.0.0'
 ```
 
 或者
 
 ```gradle
-    debugImplementation 'com.zxy.android:recovery:0.1.6'
-    releaseImplementation 'com.zxy.android:recovery-no-op:0.1.6'
+    debugImplementation 'com.zxy.android:recovery:1.0.0'
+    releaseImplementation 'com.zxy.android:recovery-no-op:1.0.0'
 ```
 
 
@@ -44,7 +44,7 @@ A crash recovery framework!
 		<dependency>
   			<groupId>com.zxy.android</groupId>
   			<artifactId>recovery</artifactId>
-  			<version>0.1.6</version>
+  			<version>1.0.0</version>
   			<type>pom</type>
 		</dependency>
 ```
@@ -139,6 +139,7 @@ public interface RecoveryCallback {
 * `VERSION-0.1.4`——**更新默认主题.**
 * `VERSION-0.1.5`——**fix 8.0+ hook bug**
 * `VERSION-0.1.6`——**update**
+* `VERSION-1.0.0`——**修复8.0上兼容性问题**
 
 # **LICENSE**
 
