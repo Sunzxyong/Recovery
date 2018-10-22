@@ -1,8 +1,12 @@
 package com.zxy.recovery.core;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.IBinder;
 
 import com.zxy.recovery.tools.RecoverySilentSharedPrefsUtil;
@@ -30,6 +34,17 @@ public class RecoveryService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        if (Build.VERSION.SDK_INT >= 26) {
+            try {
+                NotificationManager notificationManager = (NotificationManager) getApplication().getSystemService(Context.NOTIFICATION_SERVICE);
+                NotificationChannel channel = new NotificationChannel("channel_recovery_1", "Recovery", NotificationManager.IMPORTANCE_HIGH);
+                notificationManager.createNotificationChannel(channel);
+                Notification notification = new Notification.Builder(getApplication(), "channel_recovery_1").build();
+                startForeground(1024, notification);
+            } catch (Throwable t) {
+                //ignore.
+            }
+        }
 
         if (RecoverySilentSharedPrefsUtil.shouldClearAppNotRestart()) {
             //If restore failed twice within 30 seconds, will only delete data and not restored.
@@ -133,6 +148,14 @@ public class RecoveryService extends Service {
     }
 
     public static void start(Context context, Intent intent) {
-        context.startService(intent);
+        try {
+            if (Build.VERSION.SDK_INT >= 26) {
+                context.startForegroundService(intent);
+            } else {
+                context.startService(intent);
+            }
+        } catch (Throwable t) {
+            //ignore.
+        }
     }
 }

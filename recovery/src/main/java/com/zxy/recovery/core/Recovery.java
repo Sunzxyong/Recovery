@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.os.Build;
+import android.support.annotation.Keep;
 
 import com.zxy.recovery.callback.RecoveryActivityLifecycleCallback;
 import com.zxy.recovery.callback.RecoveryCallback;
@@ -128,16 +129,17 @@ public class Recovery {
     }
 
     private void registerRecoveryLifecycleCallback() {
-        ((Application) mContext).registerActivityLifecycleCallbacks(new RecoveryActivityLifecycleCallback());
+        ((Application) getContext()).registerActivityLifecycleCallbacks(new RecoveryActivityLifecycleCallback());
     }
 
+    @Keep
     private void registerRecoveryProxy() {
         //OS version in the 5.0 ~ 6.0 don`t register agent
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && Build.VERSION.SDK_INT < Build.VERSION_CODES.M)
             return;
         if (mMainPageClass == null)
             return;
-        if (!RecoveryUtil.isMainProcess(RecoveryUtil.checkNotNull(mContext, "The context is not initialized")))
+        if (!RecoveryUtil.isMainProcess(RecoveryUtil.checkNotNull(getContext(), "The context is not initialized")))
             return;
         new Thread(new Runnable() {
             @Override
@@ -153,6 +155,8 @@ public class Recovery {
     }
 
     public Context getContext() {
+        if (mContext == null)
+            mContext = ApplicationLoader.get();
         return RecoveryUtil.checkNotNull(mContext, "The context is not initialized");
     }
 
