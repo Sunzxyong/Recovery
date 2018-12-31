@@ -141,6 +141,11 @@ public interface RecoveryCallback {
 * `VERSION-0.1.6`——**update**
 * `VERSION-1.0.0`——**修复8.0上兼容性问题**
 
+## **About**
+**Blog**：[https://zhengxiaoyong.com](https://zhengxiaoyong.com)
+**Wechat**：
+![](https://raw.githubusercontent.com/Sunzxyong/ImageRepository/master/qrcode.jpg)
+
 # **LICENSE**
 
 ```

@@ -151,6 +151,11 @@ You can customize UI by setting these properties in your styles file:
 * `VERSION-0.1.6`——**update**
 * `VERSION-1.0.0`——**Fix 8.0 compatibility issue**
 
+## **About**
+**Blog**：[https://zhengxiaoyong.com](https://zhengxiaoyong.com)
+**Wechat**：
+![](https://raw.githubusercontent.com/Sunzxyong/ImageRepository/master/qrcode.jpg)
+
 # **LICENSE**
 
 ```
